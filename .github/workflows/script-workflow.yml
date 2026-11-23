@@ -35,7 +35,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Ensure script is executeable
-        run: chmod +x scripts/my-script.sh
+        run: chmod +x script
 
       # linting stage
       - name: Install ShellCheck
@@ -44,19 +44,19 @@ jobs:
           sudo apt-get install -y shellcheck
 
       - name: Run ShellCheck on script
-        run: shellcheck scripts/my-script.sh
+        run: shellcheck script
 
       # security stage
       - name: Install Flawfinder
         run: sudo apt-get install -y flawfinder
       - name: Run Flawfinder security scan
-        run: flawfinder scripts/my-script.sh
+        run: flawfinder script
 
       # testing stage
       - name: Show test message
         run: echo "Running simple test assertion..."
       - name: Execute Test Script
-        run: ./scripts/my-script.sh
+        run: ./script
 
   # deplooyment stage
   package-and-deploy:
